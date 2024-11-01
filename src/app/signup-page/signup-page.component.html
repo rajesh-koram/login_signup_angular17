@@ -1,0 +1,47 @@
+<div id="main" class="form-main">
+    <h1>Please SignUp</h1>
+    <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
+        <div class="form-container">
+            <label>Name: </label>
+            <input type="text" formControlName="name" placeholder="Please Enter Name" value="" required>
+            <div *ngIf="loginFormGroup?.get('name')?.invalid && loginFormGroup?.get('name')?.touched">
+                <div class="error-message"
+                    *ngIf="loginFormGroup?.get('name')?.errors?.['required']">
+                    Name is Required.
+                </div>
+            </div>
+        </div>
+        <div class="form-container">
+            <label>User Name: </label>
+            <input type="text" formControlName="userName" placeholder="Please Enter User Name" value="" required>
+            <div *ngIf="loginFormGroup?.get('userName')?.invalid && loginFormGroup?.get('userName')?.touched">
+                <div class="error-message" *ngIf="loginFormGroup?.get('userName')?.errors?.['required']">
+                    Username is Required.
+                </div>
+            </div>
+        </div>
+        <div class="form-container">
+            <label>Email: </label>
+            <input type="email" formControlName="email" placeholder="Please Enter Email" value="" required>
+            <div *ngIf="loginFormGroup?.get('email')?.invalid && loginFormGroup?.get('email')?.touched">
+                <div class="error-message" *ngIf="loginFormGroup?.get('email')?.errors?.['required']">
+                    Email is Required.
+                </div>
+                <div class="error-message" *ngIf="loginFormGroup?.get('email')?.errors?.['email']">Please Enter Valid Email.</div>
+            </div>
+        </div>
+        <div class="form-container">
+            <label>Password: </label>
+            <input type="password" formControlName="password" placeholder="Please Enter Password" required>
+            <div *ngIf="loginFormGroup?.get('password')?.invalid && loginFormGroup?.get('password')?.touched">
+                <div class="error-message" *ngIf="loginFormGroup?.get('password')?.errors?.['required']">
+                    Password is Required.
+                </div>
+            </div>
+        </div>
+
+        <div class="button-footer">
+            <button type="submit" class="submit-button">SignUp</button>
+        </div>
+    </form>
+</div>
